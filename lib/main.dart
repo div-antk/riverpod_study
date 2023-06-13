@@ -5,12 +5,14 @@ import 'package:riverpod_study/dogImage.dart'; // 追加
 final counterProvider = StateProvider<int>((ref) => 0); // 追加
 
 void main() {
-  runApp(ProviderScope(
-    child: MaterialApp(
-      title: 'Sample',
-      home: MyApp(),
+  runApp(
+    ProviderScope(
+      child: MaterialApp(
+        title: 'Sample',
+        home: MyApp(),
+      ),
     ),
-  ));
+  );
 }
 
 // void main() {

@@ -20,33 +20,23 @@ class DogImageWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final dogImageUrlAsyncValue = ref.watch(dogImageUrlProvider);
 
-    return dogImageUrlAsyncValue.when(
-      data: (dogImageUrl) {
-        return Image.network(dogImageUrl);
-      },
-      loading: () {
-        return CircularProgressIndicator();
-      },
-      error: (error, stackTrace) {
-        return Text('しっぱい！');
-      },
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('🐶'),
+      ),
+      body: Center(
+        child: dogImageUrlAsyncValue.when(
+          data: (dogImageUrl) {
+            return Image.network(dogImageUrl);
+          },
+          loading: () {
+            return CircularProgressIndicator();
+          },
+          error: (error, stackTrace) {
+            return Text('しっぱい！');
+          },
+        ),
+      ),
     );
   }
 }
-
-// void main() {
-//   runApp(
-//     ProviderScope(
-//       child: MaterialApp(
-//         home: Scaffold(
-//           appBar: AppBar(
-//             title: Text('🐶'),
-//           ),
-//           body: Center(
-//             child: DogImageWidget(),
-//           ),
-//         ),
-//       ),
-//     ),
-//   );
-// }
