@@ -8,7 +8,7 @@ void main() {
   runApp(ProviderScope(
     child: MaterialApp(
       title: 'Sample',
-      home: DogImageWidget(),
+      home: MyApp(),
     ),
   ));
 }
@@ -21,6 +21,20 @@ void main() {
 //     ),
 //   ));
 // }
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      initialRoute: '/',
+      routes: {
+        '/': (context) => DogImageWidget(),
+      },
+    );
+  }
+}
 
 class CounterWidget extends ConsumerWidget {
   @override
