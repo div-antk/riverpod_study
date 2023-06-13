@@ -1,18 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart'; // 追加
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_study/dogImage.dart'; // 追加
 
 final counterProvider = StateProvider<int>((ref) => 0); // 追加
 
 void main() {
-  runApp(
-    ProviderScope(
-      child: MaterialApp(
-        title: 'Sample',
-        home: CounterWidget(),
-      ),
-      )
-  );
+  runApp(ProviderScope(
+    child: MaterialApp(
+      title: 'Sample',
+      home: DogImageWidget(),
+    ),
+  ));
 }
+
+// void main() {
+//   runApp(ProviderScope(
+//     child: MaterialApp(
+//       title: 'Sample',
+//       home: CounterWidget(),
+//     ),
+//   ));
+// }
 
 class CounterWidget extends ConsumerWidget {
   @override
