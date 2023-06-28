@@ -13,16 +13,21 @@ class Counter extends StateNotifier<int> {
 
 void main() {
   runApp(
+    // RiverPodを使うためにCounterAppをProviderScopeでラップする
     const ProviderScope(child: CounterApp()),
   );
 }
 
+// Flutter Hooksを使いたいクラスに HookConsumerWidget を継承
+// HookConsumerWidget を継承している場合、build関数の第二引数は WidgetRef になるので注意 
 class CounterApp extends HookConsumerWidget {
   const CounterApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(counterProvider);
+    
+    // useStateを使って値を変化させたいものを定義する
     final isWhiteBackGround = useState(true);
 
     return MaterialApp(
