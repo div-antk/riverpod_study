@@ -2,12 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-// import 'package:riverpod_study/dogImage.dart'; // 追加
 
+
+// StateNotifierProviderを使用する
 final counterProvider = StateNotifierProvider((_) => Counter());
 
+// StateNotifierを継承したクラスを作成
+// <T> （Type）の 部分にstateの肩を入れる。これが監視対象
 class Counter extends StateNotifier<int> {
+  // Counterのstateに0を代入
   Counter() : super(0);
+  // increment()を呼ぶことでstateの値を+1する
   void increment() => state++;
 }
 
@@ -25,6 +30,8 @@ class CounterApp extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+
+    // HookConsumerWidgetを継承しているClass内のbuild関数内で定義することで、CounterクラスのstateをWidgetツリーの中で使うことができる
     final state = ref.watch(counterProvider);
     
     // useStateを使って値を変化させたいものを定義する
@@ -57,46 +64,3 @@ class CounterApp extends HookConsumerWidget {
     );
   }
 }
-
-// class MyApp extends StatelessWidget {
-//   const MyApp({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       initialRoute: '/',
-//       routes: {
-//         '/': (context) => DogImageWidget(),
-//       },
-//     );
-//   }
-// }
-
-// class CounterWidget extends ConsumerWidget {
-//   @override
-//   Widget build(BuildContext context, WidgetRef ref) {
-//     final counter = ref.watch(counterProvider);
-
-//     void _incrementCounter() {
-//       ref.read(counterProvider.notifier).state++;
-//     }
-
-//     return Column(
-//       mainAxisAlignment: MainAxisAlignment.center,
-//       children: [
-//         const Text(
-//           'Counter',
-//           style: TextStyle(fontSize: 24),
-//         ),
-//         Text(
-//           '$counter',
-//           style: const TextStyle(fontSize: 48),
-//         ),
-//         ElevatedButton(
-//           onPressed: _incrementCounter,
-//           child: const Text('Increment'),
-//         ),
-//       ],
-//     );
-//   }
-// }

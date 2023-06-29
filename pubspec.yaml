@@ -32,6 +32,8 @@ dependencies:
     sdk: flutter
   flutter_hooks:
   hooks_riverpod:
+  state_notifier:
+  freezed_annotation:
   http:
 
   # The following adds the Cupertino Icons font to your application.
@@ -43,6 +45,8 @@ dev_dependencies:
     sdk: flutter
   build_runner:
   riverpod_generator:
+  json_serializable:
+  freezed:
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
