@@ -33,6 +33,7 @@ dependencies:
   flutter_hooks:
   hooks_riverpod:
   state_notifier:
+  flutter_state_notifier:
   freezed_annotation:
   http:
 
